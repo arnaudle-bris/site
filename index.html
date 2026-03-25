@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Grande Distribution Actu</title>
+  <title>Grande Distribution Actu | Focus Leclerc</title>
   <meta name="description" content="Site d'actualité premium sur la grande distribution : enseignes, consommation, drive, promotions et innovation." />
+  
+  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/fr/e/ed/Logo_E.Leclerc_2012.svg">
+
   <style>
     :root {
       --bg: #0b0d12;
@@ -14,7 +17,9 @@
       --text: #f3f5f7;
       --muted: #aeb7c2;
       --line: rgba(255, 255, 255, 0.1);
-      --accent: #eab308;
+      /* Changement vers le BLEU LECLERC */
+      --accent: #0052a5; 
+      --accent-soft: rgba(0, 82, 165, 0.2);
       --accent-2: #60a5fa;
       --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
       --radius: 22px;
@@ -35,7 +40,7 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
         radial-gradient(circle at top right, rgba(96, 165, 250, 0.15), transparent 26%),
-        radial-gradient(circle at top left, rgba(234, 179, 8, 0.12), transparent 28%),
+        radial-gradient(circle at top left, rgba(0, 82, 165, 0.12), transparent 28%),
         linear-gradient(180deg, #080a0f 0%, #0b0d12 55%, #0f131a 100%);
       color: var(--text);
       line-height: 1.6;
@@ -88,9 +93,9 @@
       border-radius: 14px;
       display: grid;
       place-items: center;
-      color: #111;
-      background: linear-gradient(135deg, var(--accent), #f59e0b);
-      box-shadow: 0 10px 30px rgba(234, 179, 8, 0.28);
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), #003d7c);
+      box-shadow: 0 10px 30px rgba(0, 82, 165, 0.3);
       font-weight: 900;
     }
 
@@ -114,7 +119,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 18px;
+      padding: 12px 24px;
       border-radius: 999px;
       font-weight: 700;
       transition: transform 0.2s ease, opacity 0.2s ease;
@@ -126,9 +131,9 @@
     }
 
     .cta-primary {
-      background: linear-gradient(135deg, var(--accent), #f59e0b);
-      color: #111;
-      box-shadow: 0 12px 30px rgba(234, 179, 8, 0.22);
+      background: linear-gradient(135deg, var(--accent), #003d7c);
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(0, 82, 165, 0.25);
     }
 
     .cta-secondary {
@@ -152,9 +157,9 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: #f5d975;
-      background: rgba(234, 179, 8, 0.1);
-      border: 1px solid rgba(234, 179, 8, 0.18);
+      color: #93c5fd;
+      background: var(--accent-soft);
+      border: 1px solid rgba(0, 82, 165, 0.3);
       border-radius: 999px;
       padding: 8px 14px;
       font-size: 0.88rem;
@@ -274,19 +279,23 @@
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
     }
 
     .article-image {
       height: 220px;
       object-fit: cover;
+      width: 100%;
     }
 
     .card-body {
       padding: 22px;
+      flex-grow: 1;
     }
 
     .kicker {
-      color: #f4cf61;
+      color: #60a5fa;
       font-weight: 700;
       font-size: 0.8rem;
       letter-spacing: 0.08em;
@@ -342,17 +351,25 @@
       font-size: 0.95rem;
     }
 
+    /* FIX FOCUS ENSEIGNES */
     .feature {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      gap: 0;
       align-items: stretch;
+      min-height: 400px;
+    }
+
+    .feature .article-image {
+      height: 100%; /* L'image prend toute la hauteur de la carte */
+      min-height: 400px;
     }
 
     .feature .card-body {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding: 32px;
     }
 
     .feature ul {
@@ -377,13 +394,13 @@
       position: absolute;
       left: 0;
       top: 10px;
-      box-shadow: 0 0 0 6px rgba(234, 179, 8, 0.12);
+      box-shadow: 0 0 0 6px var(--accent-soft);
     }
 
     .newsletter {
       background:
-        radial-gradient(circle at 20% 20%, rgba(234,179,8,0.15), transparent 25%),
-        radial-gradient(circle at 80% 30%, rgba(96,165,250,0.14), transparent 25%),
+        radial-gradient(circle at 20% 20%, rgba(0, 82, 165, 0.15), transparent 25%),
+        radial-gradient(circle at 80% 30%, rgba(96, 165, 250, 0.14), transparent 25%),
         linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
       border: 1px solid var(--line);
       border-radius: 28px;
@@ -419,6 +436,10 @@
       outline: none;
     }
 
+    .newsletter input:focus {
+        border-color: var(--accent);
+    }
+
     .footer {
       padding: 36px 0 50px;
       color: var(--muted);
@@ -449,6 +470,11 @@
       .hero-card img {
         height: 360px;
       }
+      
+      .feature .article-image {
+        height: 250px;
+        min-height: 250px;
+      }
     }
 
     @media (max-width: 720px) {
@@ -476,7 +502,7 @@
   <header class="topbar">
     <div class="container nav">
       <a href="#" class="brand">
-        <span class="brand-badge">GD</span>
+        <span class="brand-badge">L</span>
         <span>Grande Distribution Actu</span>
       </a>
 
@@ -496,12 +522,12 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">Retail • Consommation • Enseignes • Innovation</div>
+          <div class="eyebrow">Retail • Consommation • E.Leclerc • Innovation</div>
           <h1>Le média premium dédié à la grande distribution.</h1>
           <p>
             Suivez les mouvements des enseignes, les tendances de consommation,
-            le drive, la pression promotionnelle, le retail media et les nouveaux
-            formats de magasin dans une interface sombre, élégante et éditoriale.
+            le drive, la pression promotionnelle et les innovations Leclerc 
+            dans une interface sombre, élégante et éditoriale.
           </p>
 
           <div class="hero-actions">
@@ -543,8 +569,8 @@
             <span>Veille marché</span>
           </div>
           <div class="stat">
-            <strong>4</strong>
-            <span>Grands univers éditoriaux</span>
+            <strong>Blue</strong>
+            <span>Identité Leclerc</span>
           </div>
           <div class="stat">
             <strong>100%</strong>
@@ -552,7 +578,7 @@
           </div>
           <div class="stat">
             <strong>Premium</strong>
-            <span>Fond sombre & visuels immersifs</span>
+            <span>Interface immersive</span>
           </div>
         </div>
       </div>
@@ -573,16 +599,15 @@
           <article class="card">
             <img
               class="article-image"
-              src="https://images.unsplash.com/photo-1604719312566-8912e9c8a213?auto=format&fit=crop&w=1200&q=80"
-              alt="Client dans un supermarché"
+              src="https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?auto=format&fit=crop&w=800&q=80"
+              alt="Consommation et choix en rayon"
             />
             <div class="card-body">
               <div class="kicker">Consommation</div>
               <h3>Les ménages arbitrent davantage entre prix et praticité</h3>
               <p>
                 Le contexte inflationniste continue d’influencer les comportements,
-                avec une attention accrue portée aux promotions, aux formats économiques
-                et aux achats planifiés.
+                avec une attention accrue portée aux promotions et aux achats planifiés.
               </p>
               <div class="meta-row">
                 <span>Lecture 3 min</span>
@@ -594,14 +619,14 @@
           <article class="card">
             <img
               class="article-image"
-              src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80"
-              alt="Paiement en caise et expérience client"
+              src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=800&q=80"
+              alt="Expérience client et technologie"
             />
             <div class="card-body">
               <div class="kicker">Innovation magasin</div>
               <h3>Le magasin physique mise sur l’expérience et la fluidité</h3>
               <p>
-                Encaissement simplifié, parcours plus lisible, merchandising premium :
+                Encaissement simplifié, parcours plus lisible :
                 les enseignes cherchent à renforcer la valeur perçue et la fidélité.
               </p>
               <div class="meta-row">
@@ -614,15 +639,14 @@
           <article class="card">
             <img
               class="article-image"
-              src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80"
-              alt="Livraison et logistique du commerce"
+              src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80"
+              alt="Logistique et livraison"
             />
             <div class="card-body">
               <div class="kicker">Drive & e-commerce</div>
               <h3>Le dernier kilomètre reste un levier majeur de différenciation</h3>
               <p>
-                Le secteur travaille la rapidité, la disponibilité produit et l’optimisation
-                logistique pour améliorer la rentabilité tout en préservant le service.
+                Le secteur travaille la rapidité et l’optimisation logistique pour améliorer la rentabilité du service.
               </p>
               <div class="meta-row">
                 <span>Lecture 5 min</span>
@@ -640,7 +664,7 @@
           <div>
             <h2>Focus enseignes</h2>
             <p>
-              Une mise en avant premium des stratégies des acteurs de la distribution alimentaire.
+              Une mise en avant des stratégies des leaders, avec un accent sur l'innovation Leclerc.
             </p>
           </div>
         </div>
@@ -649,20 +673,19 @@
           <article class="card feature">
             <img
               class="article-image"
-              src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?auto=format&fit=crop&w=1400&q=80"
-              alt="Façade de commerce moderne"
+              src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=80"
+              alt="Façade moderne de magasin"
             />
             <div class="card-body">
               <div class="kicker">Stratégie</div>
               <h3>Les enseignes renforcent leurs marqueurs prix</h3>
               <p>
-                Les politiques tarifaires, la lisibilité promotionnelle et la montée en puissance
-                des marques propres continuent de structurer les arbitrages concurrentiels.
+                Les politiques tarifaires et la montée en puissance des marques propres structurent les arbitrages.
               </p>
               <ul>
-                <li>Visibilité des prix repensée en magasin</li>
+                <li>Visibilité des prix repensée</li>
                 <li>Développement des gammes MDD</li>
-                <li>Communication plus offensive sur le pouvoir d’achat</li>
+                <li>Combat pour le pouvoir d’achat</li>
               </ul>
             </div>
           </article>
@@ -670,20 +693,19 @@
           <article class="card feature">
             <img
               class="article-image"
-              src="https://images.unsplash.com/photo-1555529771-35a8f5f8f597?auto=format&fit=crop&w=1400&q=80"
-              alt="Chariot et produits en magasin"
+              src="https://images.unsplash.com/photo-1516594798947-e65505dbb29d?auto=format&fit=crop&w=1400&q=80"
+              alt="Data et digital retail"
             />
             <div class="card-body">
               <div class="kicker">Transformation</div>
               <h3>Le point de vente devient un média à part entière</h3>
               <p>
-                Retail media, signalétique, data shopper et expérience de marque :
-                le magasin combine désormais commerce, contenu et performance.
+                Retail media, data shopper et expérience de marque transforment l'approche commerciale.
               </p>
               <ul>
-                <li>Monétisation de l’audience en magasin</li>
-                <li>Activation promotionnelle plus ciblée</li>
-                <li>Pilotage fin des temps forts commerciaux</li>
+                <li>Monétisation de l’audience</li>
+                <li>Activation promotionnelle ciblée</li>
+                <li>Data au service du client</li>
               </ul>
             </div>
           </article>
@@ -696,9 +718,7 @@
         <div class="section-head">
           <div>
             <h2>Tendances du secteur</h2>
-            <p>
-              Les grands sujets qui structurent l’actualité de la grande distribution.
-            </p>
+            <p>Les grands sujets qui structurent l’actualité de la GMS.</p>
           </div>
         </div>
 
@@ -707,32 +727,23 @@
             <div class="card-body">
               <div class="kicker">Pouvoir d'achat</div>
               <h3>Les promotions restent centrales</h3>
-              <p>
-                Les consommateurs continuent de comparer davantage, de stocker sur les temps forts
-                et d’arbitrer entre qualité perçue, prix net et praticité.
-              </p>
+              <p>Les consommateurs stockent sur les temps forts et comparent chaque centime.</p>
             </div>
           </article>
 
           <article class="card">
             <div class="card-body">
-              <div class="kicker">MDD</div>
-              <h3>Les marques de distributeur gagnent en image</h3>
-              <p>
-                Elles ne sont plus seulement un levier prix : elles deviennent aussi un vecteur
-                de différenciation, de fidélité et d’accessibilité.
-              </p>
+              <div class="kicker">Marque Repère</div>
+              <h3>Les MDD gagnent en image</h3>
+              <p>Elles ne sont plus seulement un levier prix mais un vecteur de différenciation.</p>
             </div>
           </article>
 
           <article class="card">
             <div class="card-body">
               <div class="kicker">Digital retail</div>
-              <h3>Le drive et le e-commerce se réorganisent</h3>
-              <p>
-                Les modèles évoluent avec plus d’exigence sur la disponibilité, le taux de service
-                et le coût logistique global.
-              </p>
+              <h3>Le drive se réorganise</h3>
+              <p>Évolution des modèles vers plus d'exigence sur le taux de service.</p>
             </div>
           </article>
         </div>
@@ -742,15 +753,14 @@
     <section id="analyse" class="section">
       <div class="container">
         <div class="newsletter">
-          <h2>Une ligne éditoriale premium, claire et efficace</h2>
+          <h2>L'expertise Retail dans votre boîte mail</h2>
           <p>
-            Ce modèle de page est conçu pour ressembler à un média moderne sur la grande distribution :
-            fond sombre, typographie forte, gros visuels, cartes éditoriales, ambiance premium.
-            Tu peux t’en servir comme base pour une home page, un magazine en ligne ou une landing page.
+            Recevez chaque matin l'essentiel de l'actu Leclerc et de la grande distribution.
+            Analyses premium et veilles stratégiques exclusives.
           </p>
           <div class="newsletter-form">
-            <input type="email" placeholder="Votre adresse email" />
-            <a href="#" class="cta cta-primary">Recevoir la newsletter</a>
+            <input type="email" placeholder="votre@email.com" />
+            <a href="#" class="cta cta-primary">S'abonner gratuitement</a>
           </div>
         </div>
       </div>
@@ -759,7 +769,7 @@
 
   <footer class="footer">
     <div class="container footer-line">
-      <span>© 2026 Grande Distribution Actu</span>
+      <span>© 2026 Grande Distribution Actu • Inspiré par Leclerc</span>
       <span>Actualités • Enseignes • Innovation • Consommation</span>
     </div>
   </footer>
